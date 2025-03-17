@@ -89,9 +89,16 @@ ggplot(top_songs, aes(x = week_num, y = rank, color = song_artist)) +
     plot.subtitle = element_text(size = 12, hjust = 0.5),
     legend.position = "bottom",
     legend.title = element_text(face = "bold"),
+    legend.key.width = unit(2.5, "cm"),  # Further increase legend key width
+    legend.text = element_text(size = 9),  # Slightly reduce text size to fit
+    legend.margin = margin(t = 0, r = 20, b = 0, l = 0),  # Add right margin to push content left
     panel.grid.minor = element_blank(),
     panel.grid.major = element_line(color = "grey90"),
-    plot.background = element_rect(fill = "#F5F5F5", color = NA)
+    plot.background = element_rect(fill = "#F5F5F5", color = NA),
+    plot.margin = unit(c(0.5, 1.5, 0.5, 0.5), "cm")  # Increase right margin
   ) +
-  guides(color = guide_legend(nrow = 2))
+  guides(color = guide_legend(nrow = 3, byrow = TRUE))
+
+# Optional: Save with increased width to ensure visibility
+# ggsave("plot.png", width = 12, height = 6, units = "in")
 ```
